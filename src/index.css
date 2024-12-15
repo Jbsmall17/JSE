@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base{
+  body{
+    @apply bg-[#edf4fd]
+  }
+  .footer-link > div > p:nth-of-type(1){
+    @apply text-lg font-semibold mb-2
+  }
+  .footer-link > div > ul > li{
+    @apply text-sm font-normal mb-1
+  }
+  .footer-link > div > ul > li:last-child{
+    @apply mb-0;
+  }
+
+}
+div.teams img{
+  aspect-ratio: 4 /2.75;
+}
