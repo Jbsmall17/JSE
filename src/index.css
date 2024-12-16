@@ -26,3 +26,44 @@
 div.teams img{
   aspect-ratio: 4 /2.75;
 }
+
+ul.inactive{
+  /* transform: translateY(-100%); */
+  animation: moveUp 0.5s ease-out forwards;
+}
+@keyframes moveUp {
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+}
+
+
+ul.active{
+  /* transform: translateY(-100%); */
+  animation: moveDown 0.5s ease-out forwards;
+}
+
+@keyframes moveDown {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+.flex-image2{
+  aspect-ratio: 2 / 2.55;
+}
+
+@media screen and (max-width: 767px) {
+  .flex-image{
+    aspect-ratio: 2 / 1.5;
+  }
+  .flex-image2{
+    aspect-ratio: 2 / 1.75;
+  }
+}

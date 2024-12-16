@@ -24,13 +24,17 @@ import Team from "../components/Team"
 import CaseStudy from '../components/CaseStudy'
 import contact1 from "../assets/contact1.png"
 import contact2 from "../assets/contact2.png"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 // green 105504
 // yellow #f1b210
 export default function Home() {
   return (
-    <main>
-      <section className='px-[5%] py-12 flex flex-row items-center'>
+    <>
+      <Header />
+      <main>
+      <section className='px-[5%] py-4 md:py-8 lg:py-12 flex flex-col lg:flex-row gap-6 items-center'>
         <div className='text-center flex-1'>
           <p className='text-5xl font-semibold text-[#105504] mb-4'>Empowering Solar <br />Solutions</p>
           <p className='text-lg font-semibold text-[#105504] mb-4'>Use Solar energy to power your home your <br /> dependence on grid</p>
@@ -39,18 +43,18 @@ export default function Home() {
               <p className='bg-white px-2 py-1'>Request Quote</p>
               <img className='absolute top-[50%] -translate-y-[50%] right-2' src={quote} alt='quote-icon' />
             </div>
-            <div className='div-consult bg-[#f1b210] py-2 px-4 font-semibold rounded-lg'>
+            <div className='div-consult cursor-pointer bg-[#f1b210] py-2 px-4 font-semibold rounded-lg'>
               Get Consultation
             </div>
           </div>
         </div>
-        <div>
-          <img src={heroImage} alt='hero image' />
+        <div className='flex-1'>
+          <img className='w-full' src={heroImage} alt='hero image' />
         </div>
       </section>
-      <section className='px-[5%] bg-[#105504] py-6'>
-        <p className='text-2xl font-semibold text-center text-[#f1b210] mb-8'>Our service</p>
-        <div className='mb-4 flex flex-row justify-center gap-10 px-[50px]'>
+      <section className='px-[5%] bg-[#105504] py-4 lg:py-6'>
+        <p className='text-2xl font-semibold text-center text-[#f1b210] mb-4 lg:mb-8'>Our service</p>
+        <div className='mb-4 flex flex-col md:flex-row justify-center gap-6 md:gap-10 px-[50px]'>
           <Service 
             children={<img src={solarIcon} alt="solar icon" />}
             serviceName="Solar Installation"
@@ -71,9 +75,9 @@ export default function Home() {
             <a href="#" className='text-lg text-[#f1b210] font-semibold underline'>See More</a>
           </div>
       </section>
-      <section className='px-[5%] pt-8 pb-12'>
-        <p className='text-center text-2xl font-semibold mb-10'>What our clients say about us</p>
-        <div className='flex flex-row gap-10'>
+      <section className='px-[5%] pt-4 md:pt-6 lg:pt-8 pb-6 md:pb-8 lg:pb-12'>
+        <p className='text-center text-2xl font-semibold mb-6 md:mb-8 lg:mb-10'>What our clients say about us</p>
+        <div className='flex flex-col md:flex-row gap-6 md:gap-10'>
           <Testimonials 
             content={"I was skeptical about suing solar but Japs solar energy made process seamless. Their team guided me through every step from installation to maintenance."}
             children={<img src={client1} alt='image of client 1' />}
@@ -100,40 +104,40 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className='bg-[#105504] px-[5%] pt-8 pb-16'>
-        <p className='text-white text-2xl font-semibold text-center mb-6'>Case Studies</p>
-        <div className='grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4'>
+      <section className='bg-[#105504] px-[5%] pt-4 md:pt-6 lg:pt-8 pb-8 sm:pb-10 md:pb-12 lg:pb-16'>
+        <p className='text-white text-2xl font-semibold text-center mb-4 lg:mb-6'>Case Studies</p>
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6'>
           <CaseStudy 
-            children={<img src={caseStudy1} alt='image of case study 1' />}
+            children={<img className='w-full' src={caseStudy1} alt='image of case study 1' />}
             content={"Houses in Ikoyi estate are properly built and all houses in the estate have solar installation on their roof"}
           />
           <CaseStudy 
-            children={<img src={caseStudy2} alt='image of case study 2' />}
+            children={<img className='w-full' src={caseStudy2} alt='image of case study 2' />}
             content={"Houses in Ikoyi estate are properly built and all houses in the estate have solar installation on their roof"}
           />
           <CaseStudy 
-            children={<img src={caseStudy3} alt='image of case study 3' />}
+            children={<img className='w-full' src={caseStudy3} alt='image of case study 3' />}
             content={"Network providers use Solar installations to power their network mask in both rural and urban area"}
           />
           <CaseStudy 
-            children={<img src={caseStudy4} alt='image of case study 4' />}
+            children={<img className='w-full' src={caseStudy4} alt='image of case study 4' />}
             content={"Houses in Ikoyi estate are properly built and all houses in the estate have solar installation on their roof"}
           />
           <CaseStudy 
-            children={<img src={caseStudy5} alt='image of case study 5' />}
+            children={<img className='w-full' src={caseStudy5} alt='image of case study 5' />}
             content={"Houses in Ikoyi estate are properly built and all houses in the estate have solar installation on their roof"}
           />
           <CaseStudy 
-            children={<img src={caseStudy6} alt='image of case study 6' />}
+            children={<img className='w-full' src={caseStudy6} alt='image of case study 6' />}
             content={"Houses in Ikoyi estate are properly built and all houses in the estate have solar installation on their roof"}
           />
         </div>
       </section>
-      <section className='px-[5%] pt-20 pb-16'>
-        <div className='border-2 border-[#f1b210] px-4 py-10'>
+      <section className='px-[5%] pt-4 lg:pt-8 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-12 xl:pb-16'>
+        <div className='border-2 border-[#f1b210] px-2 md:px-4 py-6 md:py-8 lg:py-10'>
           <p className='text-center text-2xl text-[#105504] mb-4 font-semibold'>About Us</p>
-          <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up thw world,<br /> here are the leading roles who made uo the company<br /> structure</p>
-          <div className='teams flex flex-row flex-wrap gap-x-20 gap-y-12 justify-center'>
+          <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up thw world,<br /> here are the leading roles who made uo the company structure</p>
+          <div className='teams flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center'>
             <Team 
               children={<img className='w-full' src={team1} alt="image of team memeber" />}
               role={"CEO"}
@@ -161,25 +165,27 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className='px-[5%] pt-8 pb-12'>
-          <p className='text-2xl text-center font-semibold mb-20 text-[#104504]'>Contact us</p>
-          <div className='flex flex-row justify-between'>
+        <div className='px-[5%] pt-4 md:pt-8 pb-12'>
+          <p className='text-2xl text-center font-semibold mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-20 text-[#104504]'>Contact us</p>
+          <div className='flex flex-col lg:flex-row gap-4 lg:gap-8 justify-between items-center'>
             <div>
               <p className='text-base mb-6'>
                 Have questions or need assistance?<br /> we're here to help! Reasch out to us,<br /> 
                 and our teams at japs solare Energy.
               </p>
-              <button className='h-[40px] flex items-center px-6 font-semibold text-lg rounded-xl bg-[#f1b210]'>
+              <button className='h-[40px] w-[140px] flex items-center justify-center font-semibold text-lg rounded-xl bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>
                 Contact us
               </button>
             </div>
-            <div className='flex flex-row gap-4'>
-              <img src={contact1} alt='image 1' />
-              <img className='-translate-y-[20%]' src={contact2} alt='image 2' /> 
+            <div className='flex flex-col md:flex-row gap-6 md:gap-[5%]'>
+              <img className='md:w-[45%]' src={contact1} alt='image 1' />
+              <img className='lg:-translate-y-[20%] md:w-[45%]' src={contact2} alt='image 2' /> 
             </div>
           </div>
         </div>
       </section>
     </main>
+    <Footer />
+    </>
   )
 }

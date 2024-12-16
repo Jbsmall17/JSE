@@ -10,6 +10,8 @@ import icon2 from "../assets/serviceIcon2.png"
 import { IoMdCheckmark,IoIosArrowUp,IoIosArrowDown } from "react-icons/io"
 import { RiArrowDownSFill } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 
 function ServiceComp({children,title,desc}){
@@ -32,7 +34,7 @@ function LoadComp({position,name, unit}){
         {
             position == 1
             ? 
-            <div className='grid grid-cols-[2.25fr_1.5fr_1.75fr] gap-x-32 gap-y-4 mb-4'>
+            <div className='grid grid-cols-3 lg:grid-cols-[2.25fr_1.5fr_1.75fr] gap-x-2 md:gap-x-16 lg:gap-x-24 xl:gap-x-32 gap-y-4 mb-4'>
                 <p className='text-[#f1b210] text-lg'>Appliances</p>
                 <p className='text-[#f1b210] text-lg'>Quantity</p>
                 <p className='text-[#f1b210] text-lg'>Load</p>
@@ -47,7 +49,7 @@ function LoadComp({position,name, unit}){
                 <div className='bg-[#105504] text-white p-2 rounded-lg flex justify-center items-center'>{unit}</div>
             </div>
             : 
-            <div className='grid grid-cols-[2.25fr_1.5fr_1.75fr] gap-x-32 gap-y-4 mb-4'>
+            <div className='grid grid-cols-3 lg:grid-cols-[2.25fr_1.5fr_1.75fr] gap-x-2 md:gap-x-16 lg:gap-x-24 xl:gap-x-32 gap-y-4 mb-4'>
                 <div className='bg-[#105504] text-white p-2 rounded-lg flex justify-center items-center'>{name}</div>
                 <div className='text-white bg-[#105504] p-2 rounded-lg flex justify-between items-center'>
                     <p>1</p>
@@ -65,7 +67,7 @@ function LoadComp({position,name, unit}){
 
 function LoadCalculationComp(){
     return (
-        <div className='p-8 flex-1 border-2 border-[#f1b210] rounded-lg text-white self-start text-center bg-[#105504]'>
+        <div className='p-8 flex-1 border-2 border-[#f1b210] rounded-lg text-white self-stretch sm:self-center lg:self-start text-center bg-[#105504]'>
             <div className='flex flex-col gap-1 items-center pb-4 border-b-2 border-b-white'>
                 <p className='text-lg'>Your Total Load</p>
                 <RiArrowDownSFill className='text-2xl' />
@@ -81,24 +83,24 @@ function LoadCalculationComp(){
             </div>
             <div className='p-4'>
                 <div className='text-center mb-2'>
-                    <p className='py-1 bg-[#f1b210] text-black text-lg font-semibold'>Solar panel capacity-watt</p>
-                    <p className='py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
+                    <p className='px-2 py-1 bg-[#f1b210] text-black text-lg font-semibold'>Solar panel capacity-watt</p>
+                    <p className='px-2 py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
                 </div>
                 <div className='text-center mb-2'>
-                    <p className='py-1 bg-[#f1b210] text-black text-lg font-semibold'>Panel Quantity</p>
-                    <p className='py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
+                    <p className='px-2 py-1 bg-[#f1b210] text-black text-lg font-semibold'>Panel Quantity</p>
+                    <p className='px-2 py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
                 </div>
                 <div className='text-center mb-2'>
-                    <p className='py-1 bg-[#f1b210] text-black text-lg font-semibold'>Charge Controller</p>
-                    <p className='py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
+                    <p className='px-2 py-1 bg-[#f1b210] text-black text-lg font-semibold'>Charge Controller</p>
+                    <p className='px-2 py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
                 </div>
                 <div className='text-center mb-2'>
-                    <p className='py-1 bg-[#f1b210] text-black text-lg font-semibold'>Qty of charge controller</p>
-                    <p className='py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
+                    <p className='px-2 py-1 bg-[#f1b210] text-black text-lg font-semibold'>Qty of charge controller</p>
+                    <p className='px-2 py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
                 </div>
                 <div className='text-center mb-2'>
-                    <p className='py-1 bg-[#f1b210] text-black text-lg font-semibold'>Panel bank/ K watts</p>
-                    <p className='py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
+                    <p className='px-2 py-1 bg-[#f1b210] text-black text-lg font-semibold'>Panel bank/ K watts</p>
+                    <p className='px-2 py-1 bg-white text-[#105504] text-lg font-semibold'>0</p>
                 </div>
             </div>
         </div>
@@ -107,9 +109,9 @@ function LoadCalculationComp(){
 
 function FAQ({content}){
     return (
-        <div className='relative py-4 text-white flex flex-row gap-4 items-center justify-center bg-[#105504]'>
-            <p className='text-lg font-semibold'>{content}</p>
-            <RiArrowRightSLine className='text-xl absolute right-4 top-[50%] -translate-y-[50%] font-semibold' />
+        <div className='relative py-2 px-2 md:py-4 text-white flex flex-row gap-4 items-center justify-start md:justify-center bg-[#105504]'>
+            <p className='text-start text-base md:text-lg font-normal md:font-semibold'>{content}</p>
+            <RiArrowRightSLine className='text-xl absolute right-2 md:right-4 top-[50%] -translate-y-[50%] font-semibold' />
         </div>
     )
 }
@@ -117,44 +119,46 @@ function FAQ({content}){
 
 export default function Service() {
   return (
-    <main className='px-[5%] pt-20 pb-16'>
-        <section className='flex flex-row gap-8 mb-8'>
-            <div className='p-8 bg-[#105504] text-white flex flex-col justify-between flex-[1.5] rounded-lg'>
-                <p className='text-xl font-semibold'>
+    <>
+        <Header />
+        <main className='px-[5%] pt-8 sm:pt-10 md:pt-12 lg:pt-16 xl:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-12 xl:pb-16'>
+        <section className='flex flex-col md:flex-row gap-4 lg:gap-6 xl:gap-8 mb-6 md:mb-8'>
+            <div className='p-4 lg:p-8 bg-[#105504] text-white flex flex-col justify-between gap-4 lg:gap-6 xl:gap-0 flex-[1.5] rounded-lg'>
+                <p className='text-base lg:text-xl font-semibold'>
                     Japs Solar Energy provides top-quality solar panels to homeowners and businesses, helping you save on energy costs and reduce your carbon footprint. Benefits are; - Lower energy bills. We Provide top quality solar panel to homeowners and businesses helping you save on energy cost and contributing to greener planet 
                 </p>
-                <div className='flex flex-row justify-between text-3xl font-semibold'>
-                    <p>100+ companies</p>
-                    <p>10k Houses</p>
+                <div className='flex flex-row justify-between text-2xl lg:text-3xl font-semibold'>
+                    <p className='whitespace-none'>100+ companies</p>
+                    <p className='whitespace-none'>10k Houses</p>
                 </div>
             </div> 
             <div className='flex-1'>
-                <img src={service1} alt="image in service page" />
+                <img className='flex-image h-full w-full' src={service1} alt="image in service page" />
             </div>     
         </section>
         <section>
-            <div className='flex justify-center items-center mb-12'>
-            <div className='pt-2 pb-4 px-6 bg-[#f1b210] flex flex-row justify-between max-w-[600px] w-[70%]'>
-                <div>
-                    <p className='text-2xl text-[#105504] font-semibold'>200+</p>
-                    <p className='text-lg text-[#105504]'>Clients</p>
+            <div className='flex justify-center items-center mb-6 sm:mb-8 md:mb-10 lg:mb-12'>
+            <div className='pt-2 pb-4 px-6 bg-[#f1b210] flex flex-row justify-between max-w-[600px] w-[90%]'>
+                <div className='text-center'>
+                    <p className='text-xl md:text-2xl text-[#105504] font-semibold'>200+</p>
+                    <p className='text-base md:text-lg text-[#105504]'>Clients</p>
                 </div>
-                <div>
-                    <p className='text-2xl text-[#105504] font-semibold'>1month</p>
-                    <p className='text-lg text-[#105504]'>Guaranty</p>
+                <div className='text-center'>
+                    <p className='text-xl md:text-2xl text-[#105504] font-semibold'>1month</p>
+                    <p className='text-base md:text-lg text-[#105504]'>Guaranty</p>
                 </div>
-                <div>
-                    <p className='text-2xl text-[#105504] font-semibold'>100+</p>
-                    <p className='text-lg text-[#105504]'>Satisfied customers</p>
+                <div className='text-center'>
+                    <p className='text-xl md:text-2xl text-[#105504] font-semibold'>100+</p>
+                    <p className='text-base md:text-lg text-[#105504]'>Satisfied customers</p>
                 </div>
             </div>
             </div>
             <p className='text-center text-2xl font-semibold mb-4'>
                 Here's what our valued customers have to say<br /> about their experience with us:?
             </p>
-            <div className='flex flex-row gap-12 items-center justify-center'>
+            <div className='flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 sm:items-center justify-center'>
                 <div className='flex-1'>
-                    <img className='w-full' src={service2} alt={"image in service page"} />    
+                    <img className='flex-image w-full' src={service2} alt={"image in service page"} />    
                 </div>
                 <ServiceComp 
                     children={<img className='w-[80%] h-[80%]' src={icon1} alt='service icon' />}
@@ -167,34 +171,34 @@ export default function Service() {
                     desc={"we believe in personalized pricing, contact us today to receive a detailed quoted tailored specifically for your property and energy consumption"}
                 />
             </div>
-            <p className='text-center mt-10 mb-6 text-2xl text-[#105504] font-semibold'>
+            <p className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 mb-2 md:mb-4 lg:mb-6 text-2xl text-[#105504] font-semibold'>
                 Either Residential, commercial or industrial solar <br /> we got you covered
             </p>
-            <div className='flex flex-row gap-20'>
-                <div className='flex-1'>
-                    <img className='w-full block mb-4' src={service3} alt={"service page image"} />
+            <div className='flex flex-row flex-wrap justify-center gap-x-12 md:gap-x-16 lg:gap-x-16 xl:justify-between items-center gap-y-8'>
+                <div className='w-[100%] max-w-[375px]'>
+                    <img className='flex-image2 w-full block mb-4' src={service3} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
                     <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
                     </div>
                 </div>
-                <div className='flex-1'>
-                    <img className='w-full block mb-4' src={service4} alt={"service page image"} />
+                <div className='w-[100%] max-w-[375px]'>
+                    <img className='flex-image2 w-full block mb-4' src={service4} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
                         <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
                     </div>
                 </div>
-                <div className='flex-1'>
-                    <img className='w-full block mb-4' src={service5} alt={"service page image"} />
+                <div className='w-[100%] max-w-[375px]'>
+                    <img className='flex-image2 w-full block mb-4' src={service5} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
                         <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
                     </div>
                 </div>
             </div>
-            <p className='text-center mt-16 mb-12 text-2xl text-[#105504] font-semibold'>
-                Maintananace Plans are available upon<br /> Installation
+            <p className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16 mb-4 md:mb-8 xl:mb-12 text-2xl text-[#105504] font-semibold'>
+                Maintananace Plans are available upon Installation
             </p>
-            <div className='flex flex-row gap-16 justify-center items-center '>
-                <img src={service6} alt={"service page image"} />
+            <div className='flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center items-center '>
+                <img className='w-[100%] max-w-[300px] lg:max-w-[425px]' src={service6} alt={"service page image"} />
                 <div>
                     <p className='text-[#f1b210] text-center mb-6 text-2xl font-semibold'>Schedule inspections and cleaning service <br />on the go</p>
                     <div className='flex flex-row gap-6 items-center mb-6'>
@@ -223,8 +227,8 @@ export default function Service() {
             <p className='text-center mt-12 mb-10 mb-6 text-2xl text-[#105504] font-semibold'>
                 Energy Calculator
             </p>
-            <div className='flex flex-row gap-36 mb-16'>
-                <div className='flex-[2]'>
+            <div className='flex flex-col items-center lg:flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-24 xl:gap-32 mb-8 lg:mb-12 xl:mb-16'>
+                <div className='w-full lg:w-auto flex-[2]'>
                     <LoadComp
                         position={1}
                         name={"Normal Bulb"}
@@ -298,10 +302,10 @@ export default function Service() {
                 </div>
                 <LoadCalculationComp />
             </div>
-            <div className='text-center bg-[#f1b210] pt-10 pb-16 mb-12'>
+            <div className='text-center bg-[#f1b210] pt-4 md:pt-6 lg:pt-10 pb-16 mb-6 md:mb-8 lg:mb-12'>
                 <p className='text-[#105504] text-2xl font-semibold'>Frequently Asked Questions</p>
                 <div className='flex justify-center'>
-                <div className='flex flex-col gap-4 max-w-[600px] w-[90%] mt-12'>
+                <div className='flex flex-col gap-4 max-w-[600px] w-[95%] mt-6 md:mt-8 lg:mt-12'>
                     <FAQ 
                         content={"How much does it cost to install a solar energy system?"}
                     />
@@ -330,5 +334,7 @@ export default function Service() {
             </div>
         </section>
     </main>
+    <Footer />
+    </>
   )
 }

@@ -7,26 +7,28 @@ import image5 from "../assets/testimonials5.png"
 import image6 from "../assets/testimonials6.png"
 import image7 from "../assets/testimonials7.png"
 import { FaQuoteRight,FaStar,FaArrowLeft,FaArrowRight } from "react-icons/fa"
-import { FaCircleArrowLeft,FaCircleArrowRight} from "react-icons/fa6";
-
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 export default function Testimonials() {
   return (
-    <main className='px-[5%] pt-16 pb-12'>
-        <section className='flex flex-row gap-8'>
-            <div className='relative'>
-                <img className='block' src={image1} alt={"testimonials image"} />
-                <div className='absolute left-[50%] -translate-x-[50%] w-[65%] bottom-0 translate-y-[50%] flex flex-row justify-between items-center rounded-lg p-2 bg-[#105504] text-white'>
-                    <p className='pl-4 whitespace-nowrap text-lg font-semibold'>Trusted Clients</p>
-                    <div className='flex flex-row'>
-                        <img className='w-[28px] h-[28px]' src={image2} alt="" />
-                        <img className='w-[28px] h-[28px] -translate-x-2' src={image3} alt="" />
-                        <img className='w-[28px] h-[28px]  -translate-x-4' src={image4} alt="" />
-                        <img className='w-[28px] h-[28px]  -translate-x-6' src={image5} alt="" />
+    <>
+        <Header />
+        <main className='px-[5%] pt-4 md:pt-8 lg:pt-12 xl:pt-16 pb-12'>
+        <section className='flex flex-col md:flex-row gap-8'>
+            <div className='relative flex-1'>
+                <img className='block h-full w-full' src={image1} alt={"testimonials image"} />
+                <div className='absolute left-[50%] -translate-x-[50%] w-[90%] lg:w-[65%] bottom-0 translate-y-[50%] flex flex-row justify-between items-center rounded-lg p-2 bg-[#105504] text-white'>
+                    <p className='pl-2 lg:pl-4 pr-3 whitespace-nowrap text-base lg:text-lg font-semibold'>Trusted Clients</p>
+                    <div className='flex flex-row items-center'>
+                        <img className='w-[24px] lg:w-[28px] h-[24px] lg:h-[28px]' src={image2} alt="" />
+                        <img className='w-[24px] lg:w-[28px] h-[24px] -translate-x-2' src={image3} alt="" />
+                        <img className='w-[24px] lg:w-[28px] h-[24px] -translate-x-4' src={image4} alt="" />
+                        <img className='w-[24px] lg:w-[28px] h-[24px] -translate-x-6' src={image5} alt="" />
                     </div>
                 </div>
             </div>
-            <div className='p-6 flex-1 rounded-lg bg-[#105504] text-white'>
+            <div className='p-4 lg:p-6 md:flex-[1.5] lg:flex-[1.75] rounded-lg bg-[#105504] text-white'>
                 <div className='flex flex-row justify-between items-center'>
                     <FaQuoteRight  className='text-4xl text-white'/>
                     <div className='flex flex-row gap-2 items-center'>
@@ -61,8 +63,8 @@ export default function Testimonials() {
                 </div>
             </div>
         </div>
-        <section className='bg-[linear-gradient(to_right,_#379627,_#F1B21057)] px-[5%] pt-10 pb-6'>
-            <div className='flex flex-row justify-between item-center'>
+        <section className='bg-[linear-gradient(to_right,_#379627,_#F1B21057)] px-[5%] pt-6 md:pt-10 pb-4 md:pb-6'>
+            <div className='flex flex-col md:flex-row justify-between gap-6 items-center md:items-start'>
                 <div>
                     <img src={image7} />
                 </div>
@@ -83,5 +85,7 @@ export default function Testimonials() {
             </div>
         </section>
     </main>
+        <Footer />
+    </>
   )
 }
