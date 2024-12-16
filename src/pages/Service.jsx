@@ -175,19 +175,19 @@ export default function Service() {
                 Either Residential, commercial or industrial solar <br /> we got you covered
             </p>
             <div className='flex flex-row flex-wrap justify-center gap-x-12 md:gap-x-16 lg:gap-x-16 xl:justify-between items-center gap-y-8'>
-                <div className='w-[100%] max-w-[375px]'>
+                <div className='w-[100%] max-w-[325px]'>
                     <img className='flex-image2 w-full block mb-4' src={service3} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
                     <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
                     </div>
                 </div>
-                <div className='w-[100%] max-w-[375px]'>
+                <div className='w-[100%] max-w-[325px]'>
                     <img className='flex-image2 w-full block mb-4' src={service4} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
                         <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
                     </div>
                 </div>
-                <div className='w-[100%] max-w-[375px]'>
+                <div className='w-[100%] max-w-[325px]'>
                     <img className='flex-image2 w-full block mb-4' src={service5} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
                         <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
