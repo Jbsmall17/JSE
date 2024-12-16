@@ -7,13 +7,18 @@ import team3 from "../assets/team3.png"
 import team4 from "../assets/team4.png"
 import team5 from "../assets/team5.png"
 import Team from "../components/Team"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+
 
 export default function AboutUs() {
   return (
-    <main className='py-10'>
-        <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-10'>Japs Solar Energy <br /> lighting up the world with solar</p>
-        <section className='px-[5%] flex flex-row gap-16 mb-10'>
-            <div className='flex-1 rounded-lg bg-[#105504] text-white py-10 px-6 text-xl font-semibold flex flex-col justify-between'>
+    <>
+        <Header />
+        <main className='py-6 lg:py-10'>
+        <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>Japs Solar Energy <br /> lighting up the world with solar</p>
+        <section className='px-[5%] flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 xl:gap-16 mb-6 lg:mb-10'>
+            <div className='flex-1 rounded-lg bg-[#105504] text-white py-6 lg:py-10 px-4 lg:px-6 text-lg lg:text-xl font-semibold flex flex-col gap-8 md:gap-4 lg:gap-0 justify-between'>
                 <p>
                     At Japs Solar Energy, we are dedicated to 
                     providing clean, sustainable energy solutions
@@ -27,15 +32,15 @@ export default function AboutUs() {
                 </p>
             </div>
             <div className='flex-1'>
-                <img src={image1} alt='' />
+                <img className='w-full h-full' src={image1} alt='' />
             </div>
         </section>
-        <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-10'>
+        <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>
             These are people that light up your world<br />
             our goal is simple, to shine the light and<br />
             power the world with solar.  
         </p>
-        <section className='px-[5%] teams flex flex-row flex-wrap gap-x-20 gap-y-12 justify-center mb-10'>
+        <section className='teams px-[5%] teams flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center mb-6 lg:mb-10'>
             <Team 
                 children={<img className='w-full' src={team1} alt="image of team memeber" />}
                 role={"Chief Executive officer"}
@@ -62,11 +67,11 @@ export default function AboutUs() {
                 name={"John Doe"}
             />
         </section>
-        <p className='text-2xl font-semibold text-center text-[#105504] mb-10'>
+        <p className='text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>
             Map Integration
         </p>
-        <section className='py-10 bg-[#efddaa] flex flex-row gap-20 justify-center items-center'>
-            <div className='flex flex-col gap-12 text-[#105504] font-semibold text-center text-lg'>
+        <section className='py-8 lg:py-10 bg-[#efddaa] flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20 justify-center items-center'>
+            <div className='flex flex-col gap-6 md:gap-8 lg:gap-10 xl:gap-12 text-[#105504] font-semibold text-center text-lg'>
                 <p>
                     You can locate us easily<br />
                     on our address below
@@ -81,5 +86,7 @@ export default function AboutUs() {
             </div>
         </section>
     </main>
+    <Footer />
+    </>
   )
 }

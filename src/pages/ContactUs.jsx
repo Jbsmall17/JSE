@@ -1,16 +1,19 @@
 import React from 'react'
 import { FaPhoneAlt } from "react-icons/fa";
-
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 export default function ContactUs() {
   return (
-    <main className='px-[5%] py-12'>
+    <>
+        <Header />
+        <main className='px-[5%] py-6 sm:py-8 md:py-10 lg:py-12'>
         <section>
             <p className='text-2xl font-semibold text-[#15504] mb-4 text-center'>Get In Touch</p>
             <div className='flex flex-row justify-center mb-6'>
                 <p className='text-[#105504] text-lg'>Want to speak to semoone about<br /> getting your houe installed<br /> with solar?</p>
             </div>
-            <div className='flex flex-row gap-32 items-center'>
+            <div className='flex flex-col md:flex-row lg: gap-12 md:gap-16 lg:gap-24 xl:gap-32 md:items-center'>
                 <form className='flex-1 py-8 px-4 rounded-lg bg-[#efddaa]' action="">
                     <div className='grid grid-cols-2 gap-x-10 gap-y-2 mb-6'>
                         <label htmlFor="">First name</label>
@@ -29,7 +32,7 @@ export default function ContactUs() {
                         leave a message......
                     </textarea>
                     <div className='flex justify-center'>
-                        <button className='rounded-full h-[40px] w-[70%] flex justify-center items-center bg-[#f1b210]'>Send a Message</button>
+                        <button className='rounded-full h-[40px] w-[70%] flex justify-center items-center bg-[#f1b210] hover:border hover:border-[#f1b210] hover:border hover:bg-white transition-all duration-500'>Send a Message</button>
                     </div>
                 </form>
                 <div className='flex-1'>
@@ -44,8 +47,8 @@ export default function ContactUs() {
                     <p className='text-3xl text-center text-[#105504] mb-6 font-semibold'>Chat with us</p>
                     <p className='text-lg text-[#105504] mb-6 text-center'>Speak to our friendly team via live chat</p>
                     <div className='flex flex-row justify-center gap-8 mb-10'>
-                        <button className='rounded-lg bg-[#f1b210] h-[40px] px-4 flex flex-row justify-center items-center'>Start a live chat</button>
-                        <button className='rounded-lg bg-[#f1b210] h-[40px] px-4 flex flex-row justify-center items-center'>Send an email</button>
+                        <button className='rounded-lg bg-[#f1b210] w-[140px] h-[40px] flex flex-row justify-center items-center hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>Start a live chat</button>
+                        <button className='rounded-lg bg-[#f1b210] w-[140px] h-[40px] flex flex-row justify-center items-center hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>Send an email</button>
                     </div>
                     <p className='text-3xl text-center text-[#105504] mb-6 font-semibold'>Visit Us</p>
                     <div className='flex flex-row justify-center'>
@@ -59,5 +62,7 @@ export default function ContactUs() {
             </div>
         </section>
     </main>
+    <Footer />
+    </>
   )
 }

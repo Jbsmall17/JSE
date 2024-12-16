@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { Route,Routes } from 'react-router-dom'
 import './App.css'
-import Header from "./components/Header"
-import Footer from './components/Footer'
 import Home from './pages/Home'
 import Service from './pages/Service'
 import Testimonials from './pages/Testimonials'
@@ -14,7 +12,6 @@ function App() {
 
   return (
     <>
-      <Header />
       <Routes>
         <Route 
           path='/'
@@ -41,7 +38,6 @@ function App() {
           element={<Home />}
         />
       </Routes>
-      <Footer />
     </>
   )
 }
