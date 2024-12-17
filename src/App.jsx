@@ -18,7 +18,7 @@ function App() {
           element={<Home />}
         />
          <Route 
-          path='/service'
+          path='/services'
           element={<Service />}
         />
          <Route 
