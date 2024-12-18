@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import service1 from "../assets/servicePage1.png"
 import service2 from "../assets/servicePage2.png"
 import service3 from "../assets/servicePage3.png"
@@ -12,6 +12,8 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useCustomContext } from '../context/context'
+import { useUtilsHook } from '../utils/utils'
 
 
 function ServiceComp({children,title,desc}){
@@ -28,7 +30,44 @@ function ServiceComp({children,title,desc}){
     )
 }
 
-function LoadComp({position,name, unit}){
+function LoadComp({position,name,number,unit, idx}){
+    const {loadArray,setLoadArray} = useCustomContext()
+    function increaseCount(){
+        const newArray = loadArray.map((item,index)=>{
+            if(index === idx){
+                return {
+                    ...item,
+                    number: item.number + 1
+                }
+            }
+            else{
+                return item
+            }
+        })
+        setLoadArray(newArray)
+    }
+
+    function decreaseCount(){
+        const newArray = loadArray.map((item,index)=>{
+            if(index === idx){
+                if(item.number >= 1){
+                    return {
+                        ...item,
+                        number: item.number - 1
+                    }
+                }else{
+                    return item
+                }
+
+            }
+            else{
+                return item
+            }
+        })
+        setLoadArray(newArray)
+    }
+
+
     return (
         <>
         {
@@ -40,10 +79,10 @@ function LoadComp({position,name, unit}){
                 <p className='text-[#f1b210] text-lg'>Load</p>
                 <div className='bg-[#105504] text-white p-2 rounded-lg flex justify-center items-center'>{name}</div>
                 <div className='text-white bg-[#105504] p-2 rounded-lg flex justify-between items-center'>
-                    <p>1</p>
+                    <p>{number}</p>
                     <div className='flex flex-col gap-2'>
-                        <IoIosArrowUp />
-                        <IoIosArrowDown />
+                        <IoIosArrowUp className='cursor-pointer' onClick={increaseCount} />
+                        <IoIosArrowDown className='cursor-pointer' onClick={decreaseCount} />
                     </div>
                 </div>
                 <div className='bg-[#105504] text-white p-2 rounded-lg flex justify-center items-center'>{unit}</div>
@@ -52,10 +91,10 @@ function LoadComp({position,name, unit}){
             <div className='grid grid-cols-3 lg:grid-cols-[2.25fr_1.5fr_1.75fr] gap-x-2 md:gap-x-16 lg:gap-x-24 xl:gap-x-32 gap-y-4 mb-4'>
                 <div className='bg-[#105504] text-white p-2 rounded-lg flex justify-center items-center'>{name}</div>
                 <div className='text-white bg-[#105504] p-2 rounded-lg flex justify-between items-center'>
-                    <p>1</p>
+                    <p>{number}</p>
                     <div className='flex flex-col gap-2'>
-                        <IoIosArrowUp />
-                        <IoIosArrowDown />
+                        <IoIosArrowUp className='cursor-pointer' onClick={increaseCount} />
+                        <IoIosArrowDown className='cursor-pointer' onClick={decreaseCount} />
                     </div>
                 </div>
                 <div className='bg-[#105504] text-white p-2 rounded-lg flex justify-center items-center'>{unit}</div>
@@ -66,12 +105,23 @@ function LoadComp({position,name, unit}){
 }
 
 function LoadCalculationComp(){
+    const [total,setTotal] = useState(0)
+    const {loadArray} = useCustomContext()
+
+    useEffect(()=>{
+        const total = loadArray.reduce((acc, currentValue)=>{
+            const {number, unit} = currentValue
+            return acc + (number * parseInt(unit));
+        },0)
+        setTotal(total)
+    },[loadArray])
+
     return (
         <div className='p-8 flex-1 border-2 border-[#f1b210] rounded-lg text-white self-stretch sm:self-center lg:self-start text-center bg-[#105504]'>
             <div className='flex flex-col gap-1 items-center pb-4 border-b-2 border-b-white'>
                 <p className='text-lg'>Your Total Load</p>
                 <RiArrowDownSFill className='text-2xl' />
-                <p className='text-3xl'>0</p>
+                <p className='text-3xl'>{total}</p>
                 <p className='text-xl'>Watts</p>
             </div>
             <div className='flex flex-col gap-1 items-center pt-2 pb-4 border-b-2 border-b-white'>
@@ -118,9 +168,31 @@ function FAQ({content}){
 
 
 export default function Service() {
+    const {solarRefDiv, mainRefDiv, energyRefDiv, activePage,faqRefDiv,loadArray} = useCustomContext()
+    const {scrollToSolar,scrollToMain, scrollToEnergy, scrollToFaq} = useUtilsHook()
+    useEffect(()=>{
+        if(activePage === "solar"){
+            scrollToSolar()
+        }
+        else if(activePage === "main"){
+            scrollToMain()
+        }else if (activePage === "energy"){
+            scrollToEnergy()
+        }
+        else if(activePage === "faq"){
+            scrollToFaq()
+        }
+
+        else{
+            return
+        }
+    },[activePage])
+
   return (
     <>
-        <Header />
+        <Header 
+            pageName={"services"}
+        />
         <main className='px-[5%] pt-8 sm:pt-10 md:pt-12 lg:pt-16 xl:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-12 xl:pb-16'>
         <section className='flex flex-col md:flex-row gap-4 lg:gap-6 xl:gap-8 mb-6 md:mb-8'>
             <div className='p-4 lg:p-8 bg-[#105504] text-white flex flex-col justify-between gap-4 lg:gap-6 xl:gap-0 flex-[1.5] rounded-lg'>
@@ -171,30 +243,30 @@ export default function Service() {
                     desc={"we believe in personalized pricing, contact us today to receive a detailed quoted tailored specifically for your property and energy consumption"}
                 />
             </div>
-            <p className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 mb-2 md:mb-4 lg:mb-6 text-2xl text-[#105504] font-semibold'>
+            <p ref={solarRefDiv} className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 mb-2 md:mb-4 lg:mb-6 text-2xl text-[#105504] font-semibold'>
                 Either Residential, commercial or industrial solar <br /> we got you covered
             </p>
             <div className='flex flex-row flex-wrap justify-center gap-x-12 md:gap-x-16 lg:gap-x-16 xl:justify-between items-center gap-y-8'>
                 <div className='w-[100%] max-w-[325px]'>
                     <img className='flex-image2 w-full block mb-4' src={service3} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
-                    <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
+                    <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210] hover:bg-white hover:border hover:border-[#f1b210] transition duration-500 cursor-pointer'>Get a quote</p>
                     </div>
                 </div>
                 <div className='w-[100%] max-w-[325px]'>
                     <img className='flex-image2 w-full block mb-4' src={service4} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
-                        <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
+                        <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210] hover:bg-white hover:border hover:border-[#f1b210] transition duration-500 cursor-pointer'>Get a quote</p>
                     </div>
                 </div>
                 <div className='w-[100%] max-w-[325px]'>
                     <img className='flex-image2 w-full block mb-4' src={service5} alt={"service page image"} />
                     <div className='flex justify-center items-center'>
-                        <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210]'>Get a quote</p>
+                        <p className='px-8 h-[40px] text-base rounded-full font-semibold flex justify-center  items-center bg-[#f1b210] hover:bg-white hover:border hover:border-[#f1b210] transition duration-500 cursor-pointer'>Get a quote</p>
                     </div>
                 </div>
             </div>
-            <p className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16 mb-4 md:mb-8 xl:mb-12 text-2xl text-[#105504] font-semibold'>
+            <p ref={mainRefDiv} className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16 mb-4 md:mb-8 xl:mb-12 text-2xl text-[#105504] font-semibold'>
                 Maintananace Plans are available upon Installation
             </p>
             <div className='flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 xl:gap-16 justify-center items-center '>
@@ -220,89 +292,33 @@ export default function Service() {
                         <p className='text-xl font-semibold'>Fixing of Faulty wiring</p>
                     </div>
                     <div className='flex justify-center'>
-                        <button className='py-2 px-6 h-[40px] rounded-2xl flex justify-center items-center text-base font-semibold text-[#105504] bg-[#f1b210]'>Book Now</button>
+                        <button className='px-6 h-[40px] rounded-2xl flex justify-center items-center text-base font-semibold text-[#105504] bg-[#f1b210] hover:bg-white hover:border hover:border-[#f1b210] transition duration-500 cursor-pointer'>Book Now</button>
                     </div>
                 </div>
             </div>
-            <p className='text-center mt-12 mb-10 mb-6 text-2xl text-[#105504] font-semibold'>
+            <p ref={energyRefDiv} className='text-center mt-12 mb-10 mb-6 text-2xl text-[#105504] font-semibold'>
                 Energy Calculator
             </p>
             <div className='flex flex-col items-center lg:flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-24 xl:gap-32 mb-8 lg:mb-12 xl:mb-16'>
                 <div className='w-full lg:w-auto flex-[2]'>
-                    <LoadComp
-                        position={1}
-                        name={"Normal Bulb"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={2}
-                        name={"Table light"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={3}
-                        name={"Led"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={4}
-                        name={"Fan"}
-                        unit={"40"}
-                    />
-                    <LoadComp 
-                        position={5}
-                        name={"Led/led tv(s42)"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={6}
-                        name={"Desktop computers"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={7}
-                        name={"Laptops"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={8}
-                        name={"Refrigerator(65-250ltr)"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={9}
-                        name={"Refrigerator(250-350ltr)"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={10}
-                        name={"Refrigerator(350-450ltr)"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={11}
-                        name={"AC-1HP"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={12}
-                        name={"AC-1HP"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={13}
-                        name={"AC-1.5HP"}
-                        unit={"40"}
-                    />
-                    <LoadComp
-                        position={14}
-                        name={"Toaster"}
-                        unit={"40"}
-                    />
+                    {
+                        loadArray.map(({id,appliances,number,unit},idx)=>{
+                            return (
+                                <LoadComp
+                                    key={idx}
+                                    idx={idx}
+                                    position={id}
+                                    number={number}
+                                    name={appliances}
+                                    unit={unit}
+                            />             
+                            )
+                        })
+                    }
                 </div>
                 <LoadCalculationComp />
             </div>
-            <div className='text-center bg-[#f1b210] pt-4 md:pt-6 lg:pt-10 pb-16 mb-6 md:mb-8 lg:mb-12'>
+            <div ref={faqRefDiv} className='text-center bg-[#f1b210] pt-4 md:pt-6 lg:pt-10 pb-16 mb-6 md:mb-8 lg:mb-12'>
                 <p className='text-[#105504] text-2xl font-semibold'>Frequently Asked Questions</p>
                 <div className='flex justify-center'>
                 <div className='flex flex-col gap-4 max-w-[600px] w-[95%] mt-6 md:mt-8 lg:mt-12'>

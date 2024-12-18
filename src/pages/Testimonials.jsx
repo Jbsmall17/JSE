@@ -13,7 +13,9 @@ import Footer from "../components/Footer"
 export default function Testimonials() {
   return (
     <>
-        <Header />
+        <Header 
+            pageName={"testimonials"}
+        />
         <main className='px-[5%] pt-4 md:pt-8 lg:pt-12 xl:pt-16 pb-12'>
         <section className='flex flex-col md:flex-row gap-8'>
             <div className='relative flex-1'>

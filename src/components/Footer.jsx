@@ -3,9 +3,25 @@ import logo from "../assets/jse_logo.png"
 import { FaFacebookF,FaInstagram,FaLinkedinIn, FaXTwitter} from "react-icons/fa6";
 import sptc from "../assets/sptc.png"
 import havenhill from "../assets/havenhill.png"
+import { useNavigate } from 'react-router-dom';
+import { useCustomContext } from '../context/context';
+import { useUtilsHook } from '../utils/utils';
 
 
 export default function Footer() {
+  const navigate = useNavigate()
+  const {setActivePage, HeaderRefDiv} = useCustomContext()
+  const {scrollToFaq} = useUtilsHook()
+
+  function navigateAndScrollUp(page,route){
+    HeaderRefDiv.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    })
+    navigate(route); 
+    setActivePage(page);
+  }
+
   return (
     <footer className='px-[5%] pt-8 pb-6 bg-[#105504] text-white'>
       <div className='flex flex-col md:flex-row justify-between mb-4'>
@@ -36,11 +52,11 @@ export default function Footer() {
           <div>
             <p>Quicks Links</p>
             <ul>
-              <li>About us</li>
-              <li>FAQ</li>
-              <li>Services</li>
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
+              <li className='cursor-pointer' onClick={()=>{navigateAndScrollUp("aboutUs","/about-us")}}>About us</li>
+              <li onClick={()=>scrollToFaq()} className='cursor-pointer' >FAQ</li>
+              <li className='cursor-pointer' onClick={()=>{navigateAndScrollUp("services","/services")}}>Services</li>
+              <li className='cursor-pointer'>Privacy Policy</li>
+              <li className='cursor-pointer'>Terms of Service</li>
             </ul>
           </div>
           <div>

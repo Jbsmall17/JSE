@@ -11,7 +11,7 @@ export default function ContactUs() {
         <section>
             <p className='text-2xl font-semibold text-[#15504] mb-4 text-center'>Get In Touch</p>
             <div className='flex flex-row justify-center mb-6'>
-                <p className='text-[#105504] text-lg'>Want to speak to semoone about<br /> getting your houe installed<br /> with solar?</p>
+                <p className='text-[#105504] text-lg'>Want to speak to someone about<br /> getting your houe installed<br /> with solar?</p>
             </div>
             <div className='flex flex-col md:flex-row lg: gap-12 md:gap-16 lg:gap-24 xl:gap-32 md:items-center'>
                 <form className='flex-1 py-8 px-4 rounded-lg bg-[#efddaa]' action="">
@@ -24,11 +24,11 @@ export default function ContactUs() {
                     <label htmlFor="">Email address</label><br />
                     <input className='mb-6 w-full block p-2 rounded-lg border-2 border-black outline-none' type="text" placeholder='email address' />
                     <label htmlFor="">Home address</label><br />
-                    <input className='mb-6 w-full block p-2 rounded-lg border-2 border-black outline-none' type="text" placeholder='email address' />
+                    <input className='mb-6 w-full block p-2 rounded-lg border-2 border-black outline-none' type="text" placeholder='home address' />
                     <label htmlFor="">Phone address</label><br />
-                    <input className='mb-6 w-[60%] block p-2 rounded-lg border-2 border-black outline-none' type="text" placeholder='email address' />
+                    <input className='mb-6 w-[60%] block p-2 rounded-lg border-2 border-black outline-none' type="text" placeholder='phone number' />
                     <label htmlFor="">Message</label>
-                    <textarea className='block w-full rounded-lg h-[150px] border-2 border-black resize-none mb-6'>
+                    <textarea className='block w-full rounded-lg h-[150px] border-2 border-black resize-none mb-6 p-2'>
                         leave a message......
                     </textarea>
                     <div className='flex justify-center'>

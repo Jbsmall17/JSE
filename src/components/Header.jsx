@@ -3,12 +3,14 @@ import { IoIosArrowDown } from "react-icons/io"
 import logo from "../assets/jse_logo.png"
 import { FaBars } from "react-icons/fa"
 import { IoClose } from "react-icons/io5"
+import { useCustomContext } from '../context/context'
+import { useUtilsHook } from '../utils/utils'
 
-export default function Header() {
+export default function Header({pageName}) {
+  const {scrollToSolar,scrollToMain, scrollToEnergy} = useUtilsHook()
   const [isActive, setIsActive] = useState(false)
   const [firstRender, setFirstRender] = useState(true)
-  // active: true,false. inactive: false, false 
-
+  const {setActivePage,HeaderRefDiv} = useCustomContext()
   const openNavbar = ()=>{
     setIsActive(true);
     setFirstRender(false)
@@ -17,36 +19,37 @@ export default function Header() {
   const closeNavbar = ()=>{
     setIsActive(false)
   }
+
   return (
-    <nav className='relative px-[5%] pt-[25px] flex flex-row items-center justify-between'>
+  <nav ref={HeaderRefDiv} className='relative px-[5%] pt-[25px] flex flex-row items-center justify-between'>
       <a href='/'>
       <div className='flex flex-row md:flex-col gap-2 md:gap-0 items-center'>
         <img src={logo}  alt='logo' />
         <p className='text-xl md:text-base font-bold text-[#f1b210] md:text-[#105504]'>Japs Solar Energy</p>
       </div>
       </a>
-      <ul className='bg-[#105504] self-stretch text-white md:px-4 lg:px-10 xl:px-12 hidden md:flex flex-row items-center md:gap-4 lg:gap-10 xl:gap-12 list-none'>
-        <li className='h-full flex items-center'>
-          <a href='/' className='no-underline'>Home</a> 
+      <ul className='bg-[#105504] self-stretch text-white md:px-0 lg:px-4 xl:px-6 hidden md:flex flex-row items-center justify-between list-none md:w-[350px] lg:w-[475px] xl:w-[515px]'>
+        <li className='flex-1 group h-full flex items-center justify-center'>
+          <a href='/' onClick={()=>setActivePage("home")} className={`no-underline ${pageName === "home" ? "font-bold text-lg" : ""} group-hover:font-bold group-hover:text-lg`}>Home</a> 
         </li>
-        <li className='group relative h-full flex items-center gap-1'>
-          <a href='/services' className='no-underline'>Services</a>
-          <IoIosArrowDown className='text-lg'/>
+        <li className='flex-1 group relative h-full flex items-center justify-center gap-1'>
+          <a href='/services' onClick={()=>setActivePage("services")} className={`no-underline ${pageName === "services" ? "font-bold text-lg" : ""} group-hover:font-bold group-hover:text-lg`}>Services</a>
+          <IoIosArrowDown className='text-lg group-hover:font-bold group-hover:text-xl'/>
           <ul className='hidden group-hover:flex absolute flex-col whitespace-nowrap gap-2 left-2 top-[65%] bg-[#f1b210] text-[#105504] rounded-lg p-2'>
-            <li>Solar installation</li>
-            <li>Maintenance Services</li>
-            <li>Energy Calculator</li>
+            <li onClick={() => {setActivePage("solar"); scrollToSolar()}} className='cursor-pointer'>Solar installation</li>
+            <li onClick={()=>{setActivePage("main"); scrollToMain()}} className='cursor-pointer'>Maintenance Services</li>
+            <li onClick={()=>{setActivePage("energy");scrollToEnergy()}} className='cursor-pointer'>Energy Calculator</li>
           </ul>
         </li>
-        <li className='h-full flex items-center'>
-          <a href="/testimonials"  className='no-underline'>Testimonials</a>
+        <li className='flex-1 group h-full flex items-center justify-center'>
+          <a href="/testimonials"  onClick={()=>setActivePage("testimonials")} className={`no-underline ${pageName === "testimonials" ? "font-bold text-lg" : ""} group-hover:font-bold group-hover:text-lg`}>Testimonials</a>
         </li>
-        <li className='h-full flex items-center'>
-          <a href="/about-us"  className='no-underline'>About us</a>
+        <li className='flex-1 group h-full flex items-center justify-center'>
+          <a href="/about-us" onClick={()=>setActivePage("aboutUs")} className={`no-underline ${pageName === "about-us" ? "font-bold text-lg" : ""} group-hover:font-bold group-hover:text-lg`}>About us</a>
         </li>
       </ul>
       <a href="/contact-us">
-      <button className='hidden md:block bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] rounded-lg h-[40px] w-[150px] whitespace-none lg:px-8 text-black transition-all duration-500 ease-out'>
+      <button  onClick={()=>setActivePage("contactUs")} className='hidden md:block bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] rounded-lg h-[40px] w-[150px] whitespace-none lg:px-8 text-black transition-all duration-500 ease-out'>
         Contact us
       </button>
       </a>
