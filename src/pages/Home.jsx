@@ -26,20 +26,27 @@ import contact1 from "../assets/contact1.png"
 import contact2 from "../assets/contact2.png"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import { useNavigate } from 'react-router-dom'
+import { useCustomContext } from '../context/context'
+import { useUtilsHook } from '../utils/utils'
 
 // green 105504
 // yellow #f1b210
 export default function Home() {
+   const {scrollToSolar} = useUtilsHook()
+  const {setActivePage} = useCustomContext()
   return (
     <>
-      <Header />
+      <Header 
+        pageName={"home"}
+      />
       <main>
       <section className='px-[5%] py-4 md:py-8 lg:py-12 flex flex-col lg:flex-row gap-6 items-center'>
         <div className='text-center flex-1'>
           <p className='text-5xl font-semibold text-[#105504] mb-4'>Empowering Solar <br />Solutions</p>
           <p className='text-lg font-semibold text-[#105504] mb-4'>Use Solar energy to power your home your <br /> dependence on grid</p>
           <div className='flex flex-row gap-6 items-center justify-center'>
-            <div className='relative bg-[#f1b210] py-1 pl-1 pr-8 rounded-sm'>
+            <div onClick={()=>{setActivePage("solar");scrollToSolar()}} className='div-consult2 cursor-pointer relative bg-[#f1b210] py-1 pl-1 pr-8 rounded-sm'>
               <p className='bg-white px-2 py-1'>Request Quote</p>
               <img className='absolute top-[50%] -translate-y-[50%] right-2' src={quote} alt='quote-icon' />
             </div>
@@ -136,7 +143,7 @@ export default function Home() {
       <section className='px-[5%] pt-4 lg:pt-8 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-12 xl:pb-16'>
         <div className='border-2 border-[#f1b210] px-2 md:px-4 py-6 md:py-8 lg:py-10'>
           <p className='text-center text-2xl text-[#105504] mb-4 font-semibold'>About Us</p>
-          <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up thw world,<br /> here are the leading roles who made uo the company structure</p>
+          <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up the world,<br /> here are the leading roles who made uo the company structure</p>
           <div className='teams flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center'>
             <Team 
               children={<img className='w-full' src={team1} alt="image of team memeber" />}
@@ -170,7 +177,7 @@ export default function Home() {
           <div className='flex flex-col lg:flex-row gap-4 lg:gap-8 justify-between items-center'>
             <div>
               <p className='text-base mb-6'>
-                Have questions or need assistance?<br /> we're here to help! Reasch out to us,<br /> 
+                Have questions or need assistance?<br /> we're here to help! Reach out to us,<br /> 
                 and our teams at japs solare Energy.
               </p>
               <button className='h-[40px] w-[140px] flex items-center justify-center font-semibold text-lg rounded-xl bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>

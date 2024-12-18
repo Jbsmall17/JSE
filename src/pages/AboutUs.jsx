@@ -14,7 +14,9 @@ import Footer from "../components/Footer"
 export default function AboutUs() {
   return (
     <>
-        <Header />
+        <Header 
+            pageName={"about-us"}
+        />
         <main className='py-6 lg:py-10'>
         <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>Japs Solar Energy <br /> lighting up the world with solar</p>
         <section className='px-[5%] flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 xl:gap-16 mb-6 lg:mb-10'>
