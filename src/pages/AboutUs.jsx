@@ -9,9 +9,21 @@ import team5 from "../assets/team5.png"
 import Team from "../components/Team"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 
 export default function AboutUs() {
+
+    let settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true
+      };
   return (
     <>
         <Header 
@@ -42,7 +54,7 @@ export default function AboutUs() {
             our goal is simple, to shine the light and<br />
             power the world with solar.  
         </p>
-        <section className='teams px-[5%] teams flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center mb-6 lg:mb-10'>
+        <section className='teams px-[5%] teams hidden sm:flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center mb-6 lg:mb-10'>
             <Team 
                 children={<img className='w-full' src={team1} alt="image of team memeber" />}
                 role={"Chief Executive officer"}
@@ -69,7 +81,36 @@ export default function AboutUs() {
                 name={"John Doe"}
             />
         </section>
-        <p className='text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>
+        <div className='flex justify-center'>
+        <Slider {...settings}>
+            <Team 
+                children={<img className='w-full' src={team1} alt="image of team memeber" />}
+                role={"Chief Executive officer"}
+                name={"John Doe"}
+            />
+            <Team 
+                children={<img className='w-full' src={team2} alt="image of team memeber" />}
+                role={"Chief Finance officer"}
+                name={"John Doe"}
+            />
+            <Team 
+                children={<img className='w-full' src={team3} alt="image of team memeber" />}
+                role={"Managing Director"}
+                name={"John Doe"}
+            />
+            <Team 
+                children={<img className='w-full' src={team4} alt="image of team memeber" />}
+                role={"Solar Installer"}
+                name={"John Doe"}
+            />
+            <Team 
+                children={<img className='w-full' src={team5} alt="image of team memeber" />}
+                role={"Sales Rep"}
+                name={"John Doe"}
+            />
+            </Slider>
+        </div>
+        <p className='text-2xl font-semibold text-center text-[#105504] mt-6 mb-6 lg:mb-10'>
             Map Integration
         </p>
         <section className='py-8 lg:py-10 bg-[#efddaa] flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20 justify-center items-center'>

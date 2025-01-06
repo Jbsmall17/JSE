@@ -29,12 +29,26 @@ import Footer from "../components/Footer"
 import { useNavigate } from 'react-router-dom'
 import { useCustomContext } from '../context/context'
 import { useUtilsHook } from '../utils/utils'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 
 // green 105504
 // yellow #f1b210
 export default function Home() {
    const {scrollToSolar} = useUtilsHook()
   const {setActivePage} = useCustomContext()
+
+  let settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true
+  };
+
   return (
     <>
       <Header 
@@ -44,7 +58,7 @@ export default function Home() {
       <section className='px-[5%] py-4 md:py-8 lg:py-12 flex flex-col lg:flex-row gap-6 items-center'>
         <div className='text-center flex-1'>
           <p className='text-5xl font-semibold text-[#105504] mb-4'>Empowering Solar <br />Solutions</p>
-          <p className='text-lg font-semibold text-[#105504] mb-4'>Use Solar energy to power your home your <br /> dependence on grid</p>
+          <p className='text-lg font-semibold text-[#105504] mb-4'>Use Solar energy to power your home your <br /> not depend on the national grid</p>
           <div className='flex flex-row gap-6 items-center justify-center'>
             <div onClick={()=>{setActivePage("solar");scrollToSolar()}} className='div-consult2 cursor-pointer relative bg-[#f1b210] py-1 pl-1 pr-8 rounded-sm'>
               <p className='bg-white px-2 py-1'>Request Quote</p>
@@ -86,7 +100,7 @@ export default function Home() {
         <p className='text-center text-2xl font-semibold mb-6 md:mb-8 lg:mb-10'>What our clients say about us</p>
         <div className='flex flex-col md:flex-row gap-6 md:gap-10'>
           <Testimonials 
-            content={"I was skeptical about suing solar but Japs solar energy made process seamless. Their team guided me through every step from installation to maintenance."}
+            content={"I was skeptical about using solar but Japs solar energy made process seamless. Their team guided me through every step from installation to maintenance."}
             children={<img src={client1} alt='image of client 1' />}
             name={"John Doe"}
             role={"CEO Shoprite"}
@@ -144,7 +158,7 @@ export default function Home() {
         <div className='border-2 border-[#f1b210] px-2 md:px-4 py-6 md:py-8 lg:py-10'>
           <p className='text-center text-2xl text-[#105504] mb-4 font-semibold'>About Us</p>
           <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up the world,<br /> here are the leading roles who made uo the company structure</p>
-          <div className='teams flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center'>
+          <div className='hidden sm:flex teams flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center'>
             <Team 
               children={<img className='w-full' src={team1} alt="image of team memeber" />}
               role={"CEO"}
@@ -170,6 +184,35 @@ export default function Home() {
               role={"Sales Rep"}
               name={"John Doe"}
             />
+          </div>
+          <div className='flex justify-center'>
+          <Slider {...settings} className='block sm:hidden'>
+          <Team 
+              children={<img className='w-full' src={team1} alt="image of team memeber" />}
+              role={"CEO"}
+              name={"John Doe"}
+            />
+            <Team 
+              children={<img  className='w-full' src={team2} alt="image of team memeber" />}
+              role={"CFO"}
+              name={"John Doe"}
+            />
+            <Team 
+              children={<img className='w-full' src={team3} alt="image of team memeber" />}
+              role={"MD"}
+              name={"John Doe"}
+            />
+            <Team 
+              children={<img className='w-full' src={team4} alt="image of team memeber" />}
+              role={"Solar Installer"}
+              name={"John Doe"}
+            />
+            <Team 
+              children={<img className='w-full' src={team5} alt="image of team memeber" />}
+              role={"Sales Rep"}
+              name={"John Doe"}
+            />
+          </Slider>
           </div>
         </div>
         <div className='px-[5%] pt-4 md:pt-8 pb-12'>

@@ -53,16 +53,16 @@ export default function Header({pageName}) {
         Contact us
       </button>
       </a>
-      <FaBars onClick={openNavbar} className="block md:hidden text-[#f1b210] text-4xl" />
+      <FaBars onClick={openNavbar} className="cursor-pointer block md:hidden text-[#f1b210] text-4xl" />
       <ul className={`${isActive && !firstRender ? "active" : !isActive && !firstRender ? "inactive" : "-translate-y-[100%]"} block md:hidden absolute top-0 left-0 w-full bg-[#105504] text-white px-[5%] pt-12 z-10`}>
-        <IoClose onClick={closeNavbar} className='absolute top-4 right-[5%] text-4xl' />
+        <IoClose onClick={closeNavbar} className='cursor-pointer absolute top-4 right-[5%] text-4xl' />
         <li><a className="block w-full py-2 text-center text-lg border-b border-b-white" href="/">Home</a></li>
         <li className='group'>
-          <a className="block w-full py-2 text-center text-lg border-b border-b-white" href="/services">Services</a>
+          <a className="block w-full py-2 text-center text-lg border-b border-b-white" href="javascript:0">Services</a>
           <ul className='hidden group-hover:block bg-[#f1b210] text-[#105504]'>
-            <li className='text-center text-lg py-2 border-b border-b-white'>Solar Installation</li>
-            <li className='text-center text-lg py-2 border-b border-b-white' >Maintenance Services</li>
-            <li className='text-center text-lg py-2'>Energy Calculation</li>
+            <li onClick={() => {setActivePage("solar"); scrollToSolar()}} className='text-center text-lg py-2 border-b border-b-white'>Solar Installation</li>
+            <li onClick={()=>{setActivePage("main"); scrollToMain()}} className='text-center text-lg py-2 border-b border-b-white' >Maintenance Services</li>
+            <li onClick={()=>{setActivePage("energy");scrollToEnergy()}} className='text-center text-lg py-2'>Energy Calculation</li>
           </ul>
         </li>
         <li><a className="block w-full py-2 text-center text-lg border-b border-b-white" href="/testimonials">Testimonials</a></li>
