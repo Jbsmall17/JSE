@@ -74,10 +74,10 @@ ul.active{
 }
 
 .slick-next{
-  right: -15px !important;
+  right: -10px !important;
 }
 .slick-prev{
-left: -15px !important;
+left: -10px !important;
 }
 
 .slick-prev:before, .slick-next:before{
@@ -86,4 +86,16 @@ left: -15px !important;
 
 .slick-dots li.slick-active button:before {
   color: #105504 !important;
+}
+
+.slick-slider{
+  width: 90% !important;
+  display: block !important;
+  padding-inline: 5% !important;
+} 
+
+@media screen and (min-width:693px) {
+  .slick-slider{
+    display:none !important;
+  } 
 }

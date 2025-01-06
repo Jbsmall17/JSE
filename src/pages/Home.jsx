@@ -46,7 +46,7 @@ export default function Home() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false
+    autoplay: true
   };
 
   return (
@@ -185,7 +185,8 @@ export default function Home() {
               name={"John Doe"}
             />
           </div>
-          <Slider {...settings}>
+          <div className='flex justify-center'>
+          <Slider {...settings} className='block sm:hidden'>
           <Team 
               children={<img className='w-full' src={team1} alt="image of team memeber" />}
               role={"CEO"}
@@ -212,7 +213,7 @@ export default function Home() {
               name={"John Doe"}
             />
           </Slider>
-
+          </div>
         </div>
         <div className='px-[5%] pt-4 md:pt-8 pb-12'>
           <p className='text-2xl text-center font-semibold mb-8 sm:mb-10 md:mb-12 lg:mb-16 xl:mb-20 text-[#104504]'>Contact us</p>
