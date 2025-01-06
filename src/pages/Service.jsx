@@ -182,7 +182,6 @@ export default function Service() {
         else if(activePage === "faq"){
             scrollToFaq()
         }
-
         else{
             return
         }
@@ -335,7 +334,7 @@ export default function Service() {
                         content={"Can i use my solar energy to power my entire home?"}
                     />
                     <FAQ 
-                        content={"Can i use my solar energy to power my entrie home?"}
+                        content={"Is Solar energy environmental friendly?"}
                     />
                 </div>
                 </div>

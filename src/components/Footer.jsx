@@ -14,12 +14,14 @@ export default function Footer() {
   const {scrollToFaq} = useUtilsHook()
 
   function navigateAndScrollUp(page,route){
-    HeaderRefDiv.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    })
-    navigate(route); 
+    if(page == "aboutUs"){
+      HeaderRefDiv.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      }) 
+    }
     setActivePage(page);
+    navigate(route);
   }
 
   return (

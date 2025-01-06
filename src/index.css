@@ -67,3 +67,23 @@ ul.active{
     aspect-ratio: 2 / 1.75;
   }
 }
+
+.slick-slide > div{
+  display: flex;
+  justify-content: center;
+}
+
+.slick-next{
+  right: -15px !important;
+}
+.slick-prev{
+left: -15px !important;
+}
+
+.slick-prev:before, .slick-next:before{
+  color: #105504 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #105504 !important;
+}
