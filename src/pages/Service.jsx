@@ -19,7 +19,7 @@ import { useUtilsHook } from '../utils/utils'
 function ServiceComp({children,title,desc}){
     return (
         <div className='flex-1 bg-[#105504] rounded-lg p-6 text-white text-start'>
-            <div className='flex flex-row gap-4 items-center mb-20'>
+            <div className='flex flex-row gap-4 items-center mb-10'>
                 <div className='w-[28px] h-[28px] rounded-full bg-[#f1b210] flex justify-center items-center'>
                     {children}
                 </div>
@@ -117,7 +117,7 @@ function LoadCalculationComp(){
     },[loadArray])
 
     return (
-        <div className='p-8 flex-1 border-2 border-[#f1b210] rounded-lg text-white self-stretch sm:self-center lg:self-start text-center bg-[#105504]'>
+        <div className='p-8 flex-1 border-2 border-[#f1b210] rounded-lg text-white self-stretch sm:self-center text-center bg-[#105504]'>
             <div className='flex flex-col gap-1 items-center pb-4 border-b-2 border-b-white'>
                 <p className='text-lg'>Your Total Load</p>
                 <RiArrowDownSFill className='text-2xl' />
@@ -157,11 +157,17 @@ function LoadCalculationComp(){
     )
 }
 
-function FAQ({content}){
+function FAQ({content,answer}){
+    const [isVisble,setIsVisible] = useState(false)
     return (
-        <div className='relative py-2 px-2 md:py-4 text-white flex flex-row gap-4 items-center justify-start md:justify-center bg-[#105504]'>
-            <p className='text-start text-base md:text-lg font-normal md:font-semibold'>{content}</p>
-            <RiArrowRightSLine className='text-xl absolute right-2 md:right-4 top-[50%] -translate-y-[50%] font-semibold' />
+        <div>
+            <div className='relative py-2 px-2 md:py-4 text-white flex flex-row gap-4 items-center justify-start md:justify-center bg-[#105504]'>
+                <p className='text-start text-base md:text-lg font-normal md:font-semibold'>{content}</p>
+                <RiArrowRightSLine onClick={()=>setIsVisible(!isVisble)} className={`${isVisble ? "rotate-90" : "rotate-0"} cursor-pointer text-xl absolute right-2 md:right-4 top-[50%] -translate-y-[50%] font-semibold`} />
+            </div>
+            <div className={`${!isVisble ? "hidden" : "block"} py-4 rounded-lg px-[5%] lg:px-[3%] text-white text-start bg-[#6c7b09]`}>
+                <p>{answer}</p>
+            </div>
         </div>
     )
 }
@@ -239,7 +245,7 @@ export default function Service() {
                 <ServiceComp 
                     children={<img className='w-[80%] h-[80%]' src={icon2} alt='service icon' />}
                     title={"Clear on Cost"}
-                    desc={"we believe in personalized pricing, contact us today to receive a detailed quoted tailored specifically for your property and energy consumption"}
+                    desc={"Join the growing number of individuals and businesses embracing clean, renewable solar energy that is affordable and minimal on cost for good services."}
                 />
             </div>
             <p ref={solarRefDiv} className='text-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 mb-2 md:mb-4 lg:mb-6 text-2xl text-[#105504] font-semibold'>
@@ -323,18 +329,23 @@ export default function Service() {
                 <div className='flex flex-col gap-4 max-w-[600px] w-[95%] mt-6 md:mt-8 lg:mt-12'>
                     <FAQ 
                         content={"How much does it cost to install a solar energy system?"}
+                        answer={"The cost of installing a solar varies depending on the size and components of the system as well as the location and the specific energy needs. "}   
                     />
                     <FAQ 
                         content={"Does Solar energy work in a cloudy area?"}
+                        answer={"Solar panels convert sunlight into electricity using photovoltaic cells even on cloudy days, some sunlight penetrates the cloud, allowing solar panels to generate electricity, though at a lower rate."}
                     />
                     <FAQ 
                         content={"How long do solar panel last?"}
+                        answer={"Most Manufacturers provide a performance warranty guaranteeing that panels will produce at least 80-90% of their original capacity after 25 years"}
                     />
                     <FAQ 
                         content={"Can i use my solar energy to power my entire home?"}
+                        answer={"Yes, with the right setup, solar energy can full power your home. A professional assessment is recommended to design a system tailored to your specific energy requirements. "}
                     />
                     <FAQ 
                         content={"Is Solar energy environmental friendly?"}
+                        answer={"By transitioning to solar energy, individuals and businesses contribute to a cleaner environment, mitigate climate change and help a  sustainable future. "}
                     />
                 </div>
                 </div>
