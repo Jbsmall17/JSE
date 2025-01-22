@@ -1,44 +1,65 @@
 import { useState } from 'react'
-import { Route,Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import Service from './pages/Service'
 import Testimonials from './pages/Testimonials'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
+import QuoteForm from './pages/QuoteForm'
+import PricingPlan from './pages/PricingPlan'
+import Payment from './pages/Payment'
 
+// Add this test component
+const TestComponent = () => <div className="p-4">Test Component Working</div>;
 
-function App() {
+function App () {
 
   return (
-    <>
+    <Router>
       <Routes>
-        <Route 
+        <Route
           path='/'
-          element={<Home />}
+          element={ <Home /> }
         />
-         <Route 
+        <Route
           path='/services'
-          element={<Service />}
+          element={ <Service /> }
         />
-         <Route 
+        <Route
           path='/testimonials'
-          element={<Testimonials />}
+          element={ <Testimonials /> }
         />
-        <Route 
+        <Route
           path='/about-us'
-          element={<AboutUs />}
+          element={ <AboutUs /> }
         />
-        <Route 
+        <Route
           path='/contact-us'
-          element={<ContactUs />}
+          element={ <ContactUs /> }
         />
-        <Route 
+        <Route
+          path='/quote'
+          element={ <QuoteForm /> }
+        />
+        <Route
+          path='/pricing'
+          element={ <PricingPlan /> }
+        />
+        <Route
+          path='/payment'
+          element={ <Payment /> }
+        />
+        <Route
+          path='/test'
+          element={ <TestComponent /> }
+        />
+        <Route
           path='/*'
-          element={<Home />}
+          element={ <Home /> }
         />
       </Routes>
-    </>
+    </Router>
   )
 }
 

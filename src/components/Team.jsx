@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Team({children,role,name}) {
   return (
-    <div className='w-[90%] sm:max-w-[250px] lg:max-w-[275px] xl:max-w-[300px] text-[#105504]'>
+    <div className='w-[90%] sm:max-w-[300px] lg:max-w-[325px] xl:max-w-[350px] text-[#105504]'>
       <div>
         {children}
       </div>

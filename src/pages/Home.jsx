@@ -37,9 +37,8 @@ import Slider from "react-slick";
 // green 105504
 // yellow #f1b210
 export default function Home() {
-  const {scrollToSolar} = useUtilsHook()
+   const {scrollToSolar} = useUtilsHook()
   const {setActivePage} = useCustomContext()
-  const navigate = useNavigate()
 
   let settings = {
     dots: true,
@@ -59,7 +58,7 @@ export default function Home() {
       <section className='px-[5%] py-4 md:py-8 lg:py-12 flex flex-col lg:flex-row gap-6 items-center'>
         <div className='text-center flex-1'>
           <p className='text-5xl font-semibold text-[#105504] mb-4'>Empowering Solar <br />Solutions</p>
-          <p className='text-lg font-semibold text-[#105504] mb-4'>Use Solar energy to power your home and <br /> not depend on the national grid</p>
+          <p className='text-lg font-semibold text-[#105504] mb-4'>Use Solar energy to power your home your <br /> not depend on the national grid</p>
           <div className='flex flex-row gap-6 items-center justify-center'>
             <div onClick={()=>{setActivePage("solar");scrollToSolar()}} className='div-consult2 cursor-pointer relative bg-[#f1b210] py-1 pl-1 pr-8 rounded-sm'>
               <p className='bg-white px-2 py-1'>Request Quote</p>
@@ -76,11 +75,11 @@ export default function Home() {
       </section>
       <section className='px-[5%] bg-[#105504] py-4 lg:py-6'>
         <p className='text-2xl font-semibold text-center text-[#f1b210] mb-4 lg:mb-8'>Our service</p>
-        <div className='mb-4 flex flex-col lg:flex-row justify-center gap-6 md:gap-10 lg:px-[25px] xl:px-[50px]'>
+        <div className='mb-4 flex flex-col md:flex-row justify-center gap-6 md:gap-10 px-[50px]'>
           <Service 
             children={<img src={solarIcon} alt="solar icon" />}
             serviceName="Solar Installation"
-            serviceDesc="Our team of certified professionals has extensive experience in installing solar panels for various types of properties including residential, and industry. We prioritize safety, efficiency and quality workmanship."
+            serviceDesc="Our team of certified professionals has extensive experience in installing solar panels for various types of properties including residential, commercial and industry. We prioritize safety, efficiency and quality workmanship."
           />
           <Service 
             children={<img src={servicesIcon} alt='service-icon' />}
@@ -99,19 +98,19 @@ export default function Home() {
       </section>
       <section className='px-[5%] pt-4 md:pt-6 lg:pt-8 pb-6 md:pb-8 lg:pb-12'>
         <p className='text-center text-2xl font-semibold mb-6 md:mb-8 lg:mb-10'>What our clients say about us</p>
-        <div className='flex flex-col lg:flex-row gap-6 md:gap-10'>
+        <div className='flex flex-col md:flex-row gap-6 md:gap-10'>
           <Testimonials 
             content={"I was skeptical about using solar but Japs solar energy made process seamless. Their team guided me through every step from installation to maintenance."}
             children={<img src={client1} alt='image of client 1' />}
-            name={"John Okonkwo"}
-            role={"E-commerce"}
+            name={"John Doe"}
+            role={"CEO Shoprite"}
             bgDivColor={"bg-[#f1b210]"}
             bgIconColor={"text-[#105504]"}
           />
           <Testimonials 
             content={"Japs solar energy helped us transition to renewable energy significantly lowering our operational cost. Their professionalism and expertise impressed us"}
             children={<img src={client2} alt='image of client 2' />}
-            name={"Danladi Ibrahim"}
+            name={"Jane Doe"}
             role={"Business owner"}
             bgDivColor={"bg-[#105504]"}
             bgIconColor={"text-[#f1b210]"}
@@ -119,7 +118,7 @@ export default function Home() {
           <Testimonials 
             content={"As a consicious consumer, I sought a reliable solar provider. Japs solar energy exceeded expectations with their top-notch products and exceptional customer service"}
             children={<img src={client3} alt='image of client 3' />}
-            name={"Vivian Olawole"}
+            name={"Sarah Taylor"}
             role={"Eco-warrior"}
             bgDivColor={"bg-[#f1b210]"}
             bgIconColor={"text-[#105504]"}
@@ -128,7 +127,7 @@ export default function Home() {
       </section>
       <section className='bg-[#105504] px-[5%] pt-4 md:pt-6 lg:pt-8 pb-8 sm:pb-10 md:pb-12 lg:pb-16'>
         <p className='text-white text-2xl font-semibold text-center mb-4 lg:mb-6'>Case Studies</p>
-        <div className='grid grid-cols-[repeat(auto-fit,minmax(275px,1fr))] gap-6 lg:gap-8'>
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6'>
           <CaseStudy 
             children={<img className='w-full' src={caseStudy1} alt='image of case study 1' />}
             content={"Houses in Ikoyi estate are properly built and all houses in the estate have solar installation on their roof"}
@@ -158,32 +157,32 @@ export default function Home() {
       <section className='px-[5%] pt-4 lg:pt-8 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-12 xl:pb-16'>
         <div className='border-2 border-[#f1b210] px-2 md:px-4 py-6 md:py-8 lg:py-10'>
           <p className='text-center text-2xl text-[#105504] mb-4 font-semibold'>About Us</p>
-          <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up the world,<br /> here are the leading roles who made up the company structure</p>
-          <div className='hidden sm:flex teams flex-row flex-wrap gap-4 md:gap-6 xl:gap-10 gap-y-6 justify-center'>
+          <p className='text-center text-lg text-[#105054] mb-4 font-semibold'>We are the people who light up the world,<br /> here are the leading roles who made uo the company structure</p>
+          <div className='hidden sm:flex teams flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center'>
             <Team 
               children={<img className='w-full' src={team1} alt="image of team memeber" />}
               role={"CEO"}
-              name={"Chime Chinedu Asika"}
+              name={"John Doe"}
             />
             <Team 
               children={<img  className='w-full' src={team2} alt="image of team memeber" />}
               role={"CFO"}
-              name={"Isreal Olumide"}
+              name={"John Doe"}
             />
             <Team 
               children={<img className='w-full' src={team3} alt="image of team memeber" />}
               role={"MD"}
-              name={"Feyisara Ekanem"}
+              name={"John Doe"}
             />
             <Team 
               children={<img className='w-full' src={team4} alt="image of team memeber" />}
               role={"Solar Installer"}
-              name={"Stephen Ibeh"}
+              name={"John Doe"}
             />
             <Team 
               children={<img className='w-full' src={team5} alt="image of team memeber" />}
               role={"Sales Rep"}
-              name={"Peace Uwaoma"}
+              name={"John Doe"}
             />
           </div>
           <div className='flex justify-center'>
@@ -224,7 +223,7 @@ export default function Home() {
                 Have questions or need assistance?<br /> we're here to help! Reach out to us,<br /> 
                 and our teams at japs solare Energy.
               </p>
-              <button onClick={()=>navigate("/contact-us")} className='h-[40px] w-[140px] flex items-center justify-center font-semibold text-lg rounded-xl bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>
+              <button className='h-[40px] w-[140px] flex items-center justify-center font-semibold text-lg rounded-xl bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>
                 Contact us
               </button>
             </div>
