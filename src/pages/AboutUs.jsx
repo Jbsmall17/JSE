@@ -32,7 +32,7 @@ export default function AboutUs() {
         <main className='py-6 lg:py-10'>
         <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>Japs Solar Energy <br /> lighting up the world with solar</p>
         <section className='px-[5%] flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 xl:gap-16 mb-6 lg:mb-10'>
-            <div className='flex-1 rounded-lg bg-[#105504] text-white py-6 lg:py-10 px-4 lg:px-6 text-lg lg:text-xl font-semibold flex flex-col gap-8 md:gap-4 lg:gap-0 justify-between'>
+            <div className='flex-1 rounded-lg bg-[#105504] text-white py-6 lg:py-10 px-4 lg:px-6 text-lg lg:text-xl font-semibold flex flex-col gap-6 md:gap-8 lg:gap-10'>
                 <p>
                     At Japs Solar Energy, we are dedicated to 
                     providing clean, sustainable energy solutions
@@ -49,10 +49,12 @@ export default function AboutUs() {
                 <img className='w-full h-full' src={image1} alt='' />
             </div>
         </section>
-        <p className='px-[5%] text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>
-            These are people that light up your world<br />
-            our goal is simple, to shine the light and<br />
-            power the world with solar.  
+        <p className='px-[5%] flex justify-center items-center text-xl md:text-2xl font-semibold text-center text-[#105504] mb-6 lg:mb-10'>
+            <p className='md:w-[475px]'>
+                These are people that light up your world
+                Our goal is simple, to shine the light and
+                power the world with solar.
+            </p>  
         </p>
         <section className='teams px-[5%] teams hidden sm:flex flex-row flex-wrap gap-x-4 sm:gap-x-4 md:gap-x-6 lg:gap-x-14 xl:gap-x-18 gap-y-6 md:gap-y-8 lg:gap-y-12 justify-center mb-6 lg:mb-10'>
             <Team 
@@ -110,9 +112,6 @@ export default function AboutUs() {
             />
             </Slider>
         </div>
-        <p className='text-2xl font-semibold text-center text-[#105504] mt-6 mb-6 lg:mb-10'>
-            Map Integration
-        </p>
         <section className='py-8 lg:py-10 bg-[#efddaa] flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20 justify-center items-center'>
             <div className='flex flex-col gap-6 md:gap-8 lg:gap-10 xl:gap-12 text-[#105504] font-semibold text-center text-lg'>
                 <p>
@@ -120,8 +119,8 @@ export default function AboutUs() {
                     on our address below
                 </p>
                 <p>
-                    XYZ New Virgina Arena,<br />
-                    Lagos Nigeria
+                    Chop c12 global plaza<br /> 
+                    wuse Abuja, Nigeria
                 </p>
             </div>
             <div>
