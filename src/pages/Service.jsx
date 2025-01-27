@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 function ServiceComp ({ children, title, desc }) {
+    const navigate = useNavigate()
     return (
         <div className='flex-1 bg-[#105504] rounded-lg p-6 text-white text-start'>
             <div className='flex flex-row gap-4 items-center mb-20'>
@@ -367,7 +368,9 @@ export default function Service () {
                         business, estates.
                     </p>
                     <div className='flex justify-center'>
-                        <button className='bg-[#f1b210] px-8 text-white h-[40px] items-center justify-between text-base rounded-full'>Contact Us</button>
+                        <button onClick={()=>{navigate("/contact-us");window.scrollTo(0,0)}} className='bg-[#f1b210] hover:bg-white hover:border hover:border-[#f1b210] hover:text-[#f1b210] w-[140px] text-white h-[40px] items-center justify-between text-base rounded-full transition-all duration-500'>
+                            Contact Us
+                        </button>
                     </div>
                 </section>
             </main>

@@ -37,7 +37,8 @@ import Slider from "react-slick";
 // green 105504
 // yellow #f1b210
 export default function Home() {
-   const {scrollToSolar} = useUtilsHook()
+  const navigate = useNavigate()
+  const {scrollToSolar} = useUtilsHook()
   const {setActivePage} = useCustomContext()
 
   let settings = {
@@ -223,7 +224,7 @@ export default function Home() {
                 Have questions or need assistance?<br /> we're here to help! Reach out to us,<br /> 
                 and our teams at japs solare Energy.
               </p>
-              <button className='h-[40px] w-[140px] flex items-center justify-center font-semibold text-lg rounded-xl bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>
+              <button onClick={()=> {navigate("/contact-us");window.scrollTo(0,0)}} className='h-[40px] w-[140px] flex items-center justify-center font-semibold text-lg rounded-xl bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] transition-all duration-500'>
                 Contact us
               </button>
             </div>
