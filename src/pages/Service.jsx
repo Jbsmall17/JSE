@@ -11,7 +11,7 @@ import { IoMdCheckmark, IoIosArrowUp, IoIosArrowDown } from "react-icons/io"
 import { RiArrowDownSFill } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Header from '../components/Header'
-import Footer from '../components/Footer'
+import FooterServices from '../components/FooterServices'
 import { useCustomContext } from '../context/context'
 import { useUtilsHook } from '../utils/utils'
 import { useNavigate } from 'react-router-dom'
@@ -374,7 +374,7 @@ export default function Service () {
                     </div>
                 </section>
             </main>
-            <Footer />
+            <FooterServices />
         </>
     )
 }

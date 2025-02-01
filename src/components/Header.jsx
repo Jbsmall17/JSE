@@ -49,7 +49,7 @@ export default function Header({pageName}) {
         </li>
       </ul>
       <a href="/contact-us">
-      <button  onClick={()=>setActivePage("contactUs")} className='hidden md:block bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] rounded-lg h-[40px] w-[150px] whitespace-none lg:px-8 text-black transition-all duration-500 ease-out'>
+      <button  onClick={()=>setActivePage("contactUs")} className='hidden md:block bg-[#f1b210] hover:bg-transparent hover:border hover:border-[#f1b210] rounded-lg h-[40px] w-[155px] whitespace-none lg:px-8 text-black transition-all duration-500 ease-out whitespace-nowrap'>
         Contact us
       </button>
       </a>
