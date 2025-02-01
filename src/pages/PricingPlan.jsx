@@ -52,15 +52,6 @@ export default function PricingPlan () {
         }
     ]
 
-    const handleContinue = () => {
-        if (selectedPlan === null) {
-            alert('Please select a plan to continue')
-            return
-        }
-        localStorage.setItem("payment",JSON.stringify(selectedPlanObj))
-        // navigate('/payment')
-    }
-
     const componentProps = {
         email: parseFormData.email,
         amount: selectedPlanObj.price * 100,
@@ -74,6 +65,7 @@ export default function PricingPlan () {
             });
             if (response2.data.data.status === 'success'){
                 alert("payment verified")
+                localStorage.clear()
             }
         },
         onClose: async ()=>{
