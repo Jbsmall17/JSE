@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoClose } from "react-icons/io5"
+import { PaystackButton } from 'react-paystack'
+import axios from 'axios'
 
 export default function PricingPlan () {
+    const publicKey = import.meta.env.VITE_APP_PUBLIC_TEST_KEY || ""
+    const secretKey = import.meta.env.VITE_PUBLIC_SECRET_KEY || ""
+    const formData = localStorage.getItem("quoteFormData")
+    const parseFormData = JSON.parse(formData)
     const [selectedPlan, setSelectedPlan] = useState(null)
+    const [selectedPlanObj,setSelectedPlanObj] = useState({})
     const navigate = useNavigate()
 
     const plans = [
@@ -50,7 +57,28 @@ export default function PricingPlan () {
             alert('Please select a plan to continue')
             return
         }
-        navigate('/payment')
+        localStorage.setItem("payment",JSON.stringify(selectedPlanObj))
+        // navigate('/payment')
+    }
+
+    const componentProps = {
+        email: parseFormData.email,
+        amount: selectedPlanObj.price * 100,
+        publicKey,
+        text: "Pay Now",
+        onSuccess: async (response)=>{
+            const response2 = await axios.get(`https://api.paystack.co/transaction/verify/${response.reference}`, {
+                headers: {
+                  Authorization: `Bearer ${secretKey}`,
+                },
+            });
+            if (response2.data.data.status === 'success'){
+                alert("payment verified")
+            }
+        },
+        onClose: async ()=>{
+            // console.log("Payment cancelled")
+        }
     }
 
     return (
@@ -89,7 +117,7 @@ export default function PricingPlan () {
                     { plans.map((plan, index) => (
                         <div
                             key={ index }
-                            onClick={ () => setSelectedPlan(index) }
+                            onClick={ () => {setSelectedPlan(index); setSelectedPlanObj(plan)}}
                             className={ `bg-white p-8 rounded-2xl cursor-pointer transition-all hover:shadow-lg ${ selectedPlan === index ? 'ring-2 ring-[#034D28]' : ''
                                 }` }
                         >
@@ -120,12 +148,14 @@ export default function PricingPlan () {
 
                 {/* Continue Button */ }
                 <div className="flex justify-center">
-                    <button
-                        onClick={ handleContinue }
-                        className="bg-[#f1b210] text-black px-16 py-4 rounded-lg font-semibold text-lg hover:bg-[#d99f0e] transition-colors"
-                    >
-                        Continue
-                    </button>
+                    {/* <button> */}
+                        <PaystackButton
+                            disabled={!selectedPlanObj.price}
+                            className="bg-[#f1b210] text-black px-16 py-4 rounded-lg font-semibold text-lg hover:bg-[#d99f0e] transition-colors"
+                            {...componentProps}
+                        >
+                        </PaystackButton>
+                    {/* </button> */}
                 </div>
             </div>
         </div>

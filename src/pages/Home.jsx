@@ -65,7 +65,7 @@ export default function Home() {
               <p className='bg-white px-2 py-1'>Request Quote</p>
               <img className='absolute top-[50%] -translate-y-[50%] right-2' src={quote} alt='quote-icon' />
             </div>
-            <div className='div-consult cursor-pointer bg-[#f1b210] py-2 px-4 font-semibold rounded-lg'>
+            <div onClick={()=>navigate("quote")} className='div-consult cursor-pointer bg-[#f1b210] py-2 px-4 font-semibold rounded-lg'>
               Get Consultation
             </div>
           </div>
